@@ -1,4 +1,10 @@
 
+  const infoAudi = document.querySelector('.infoAudi');
+  const infoMercedes = document.querySelector('.infoMercedes');
+  const infoBikeOne = document.querySelector('.infoBikeOne');
+  const infoBikeTwo = document.querySelector('.infoBikeTwo');
+
+
   class Transport{
     constructor(type, price, brand){
         this.type = type;
@@ -6,35 +12,31 @@
         this.brand = brand;
     }
     getInfo(){
-        return{
-            type: this.type,
-            brand: this.brand,
-        }
-
+        return `тип: ${this.type}, бренд: ${this.brand}`;
     }
-    getPrice(){
-        return this.price;
+        getPrice(){
+        return `Цена: ${this.price}`;
   
     }
   }
 
   class Car extends Transport{
-    constructor(doors){
+    constructor(type, price, brand,doors){
         super(type, price, brand);
         this.doors = doors;
     }
     getDoorsCount(){
-        return this.doors;
+        return `Количество дверей: ${this.doors}`;
     }
   }
 
   class Bike extends Transport{
-    constructor(maxSpeed){
+    constructor(type, price, brand,maxSpeed){
         super(type, price, brand);
         this.maxSpeed = maxSpeed;
     }
     getMaxSpeed(){
-        return this.maxSpeed;
+        return `Максимальная скорость: ${this.maxSpeed}`;
     }
   }
 
@@ -72,4 +74,29 @@
       image: 'https://cdn.dealerspike.com/imglib/products/harley-showroom/2020/livewire/main/Vivid-Black-Main.png'
     }
   ];
+
+const audi = new Car('car', 4300000,'Audi',4);
+const mercedes  = new Car('car',2800000,'Mercedes-Benz',4);
+const harleyOne = new Bike('bike', 1300000,'Harley-Davidson',210);
+const  harleyTwo = new Bike('bike', 1400000,'Harley-Davidson',220)
+
+function getInfoAudi(){
+    infoAudi.textContent = `Общая информация: ${audi.getInfo()}; ${audi.getPrice()}; ${audi.getDoorsCount()}`;
+}
+function getInfoMercedes(){
+    infoMercedes.textContent = `Общая информация: ${mercedes.getInfo()}; ${mercedes.getPrice()}; ${mercedes.getDoorsCount()}`;
+}
+
+function getInfoBikeOne(){
+    infoBikeOne.textContent = `Общая информация: ${harleyOne.getInfo()}; ${harleyOne.getPrice()}; ${harleyOne.getMaxSpeed()}`;
+}
+
+function  getInfoBikeTwo(){
+    infoBikeTwo.textContent = `Общая информация: ${harleyTwo.getInfo()}; ${harleyTwo.getPrice()}; ${harleyTwo.getMaxSpeed()}`;
+}
+
+    getInfoAudi();
+    getInfoMercedes();
+    getInfoBikeOne();
+    getInfoBikeTwo();
 
